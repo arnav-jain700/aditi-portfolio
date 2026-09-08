@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Developer Portfolio & AI Systems | Aditi</title>
+  <meta name="description" content="Portfolio of Aditi - Full-Stack Software Engineer, AI Systems Architect, and Creative WebGL Developer." />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- SVG Sprite Inclusion -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+    <defs>
+      <g id="icon-lock">
+        <rect x="3" y="11" width="18" height="11" rx="2" ry="2" stroke="currentColor" stroke-width="2" fill="none"/>
+        <path d="M7 11V7a5 5 0 0 1 10 0v4" stroke="currentColor" stroke-width="2" fill="none"/>
+      </g>
+      <g id="icon-sun">
+        <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="2" fill="none"/>
+        <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="2"/>
+      </g>
+      <g id="icon-moon">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="2" fill="none"/>
+      </g>
+      <g id="icon-github">
+        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+      <g id="icon-linkedin">
+        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z" stroke="currentColor" stroke-width="2" fill="none"/>
+        <circle cx="4" cy="4" r="2" stroke="currentColor" stroke-width="2" fill="none"/>
+      </g>
+      <g id="icon-external">
+        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+      <g id="icon-menu">
+        <line x1="3" y1="12" x2="21" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        <line x1="3" y1="6" x2="21" y2="6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        <line x1="3" y1="18" x2="21" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </g>
+      <g id="icon-close">
+        <line x1="18" y1="6" x2="6" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        <line x1="6" y1="6" x2="18" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </g>
+      <g id="icon-send">
+        <line x1="22" y1="2" x2="11" y2="13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <polygon points="22 2 15 22 11 13 2 9 22 2" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+      <g id="icon-bot">
+        <rect x="3" y="11" width="18" height="10" rx="2" stroke="currentColor" stroke-width="2" fill="none"/>
+        <circle cx="12" cy="5" r="2" stroke="currentColor" stroke-width="2" fill="none"/>
+        <path d="M12 7v4M8 16h.01M16 16h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </g>
+      <g id="icon-trophy">
+        <path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0V4z" stroke="currentColor" stroke-width="2" fill="none"/>
+        <path d="M7 4H3a2 2 0 0 0-2 2v2a4 4 0 0 0 4 4h2M17 4h4a2 2 0 0 1 2 2v2a4 4 0 0 1-4 4h-2" stroke="currentColor" stroke-width="2" fill="none"/>
+      </g>
+      <g id="icon-award">
+        <circle cx="12" cy="8" r="7" stroke="currentColor" stroke-width="2" fill="none"/>
+        <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88" stroke="currentColor" stroke-width="2" fill="none"/>
+      </g>
+      <g id="icon-briefcase">
+        <rect x="2" y="7" width="20" height="14" rx="2" ry="2" stroke="currentColor" stroke-width="2" fill="none"/>
+        <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" stroke="currentColor" stroke-width="2" fill="none"/>
+      </g>
+      <g id="icon-code">
+        <polyline points="16 18 22 12 16 6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <polyline points="8 6 2 12 8 18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+      <g id="icon-download">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+      <g id="icon-file-text">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" stroke="currentColor" stroke-width="2" fill="none"/>
+        <polyline points="14 2 14 8 20 8" stroke="currentColor" stroke-width="2" fill="none"/>
+        <line x1="16" y1="13" x2="8" y2="13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        <line x1="16" y1="17" x2="8" y2="17" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </g>
+      <g id="icon-sparkles">
+        <path d="M12 3v3m0 12v3M3 12h3m12 0h3m-3.5-6.5l-2 2m-7 7l-2 2m0-11l2 2m7 7l2 2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </g>
+      <g id="icon-trash">
+        <polyline points="3 6 5 6 21 6" stroke="currentColor" stroke-width="2" fill="none"/>
+        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" stroke="currentColor" stroke-width="2" fill="none"/>
+      </g>
+      <g id="icon-sync">
+        <path d="M23 4v6h-6M1 20v-6h6" stroke="currentColor" stroke-width="2" fill="none"/>
+        <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15" stroke="currentColor" stroke-width="2" fill="none"/>
+      </g>
+      <g id="icon-plus">
+        <line x1="12" y1="5" x2="12" y2="19" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        <line x1="5" y1="12" x2="19" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </g>
+      <g id="icon-eye">
+        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke="currentColor" stroke-width="2" fill="none"/>
+        <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2" fill="none"/>
+      </g>
+      <g id="icon-terminal">
+        <polyline points="4 17 10 11 4 5" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <line x1="12" y1="19" x2="20" y2="19" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </g>
+    </defs>
+  </svg>
+
+  <!-- 3D Particle Canvas Background -->
+  <canvas id="bg-canvas"></canvas>
+
+  <!-- Main SPA Container -->
+  <div class="app-container">
+
+    <!-- Top Navigation Bar -->
+    <header class="navbar">
+      <div class="nav-inner">
+        <a href="#home" class="brand-logo">
+          <div class="brand-icon">
+            <svg class="icon"><use href="#icon-sparkles"></use></svg>
+          </div>
+          <span>Portfolio<span style="color:var(--accent-cyan)">.</span></span>
+        </a>
+
+        <nav class="nav-links">
+          <a href="#home" class="active">Home</a>
+          <a href="#journey">Journey</a>
+          <a href="#skills">Skills</a>
+          <a href="#projects">Projects</a>
+          <a href="#certificates">Certificates</a>
+          <a href="#hackathons">Hackathons</a>
+          <a href="#job-scanner">AI Job-Fit</a>
+          <a href="#contact">Contact</a>
+        </nav>
+
+        <div class="nav-actions">
+          <button id="theme-toggle-btn" class="icon-btn" title="Toggle Theme" aria-label="Toggle Theme">
+            <svg class="icon"><use href="#icon-sun"></use></svg>
+          </button>
+          <button id="mobile-drawer-toggle" class="icon-btn mobile-toggle" title="Menu" aria-label="Open Menu">
+            <svg class="icon"><use href="#icon-menu"></use></svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Mobile Drawer & Overlay -->
+    <div id="drawer-overlay" class="drawer-overlay"></div>
+    <div id="mobile-drawer" class="mobile-drawer">
+      <div class="drawer-header">
+        <span style="font-weight:700;font-size:1.1rem;">Menu</span>
+        <button id="drawer-close-btn" class="icon-btn"><svg class="icon"><use href="#icon-close"></use></svg></button>
+      </div>
+      <div class="drawer-links">
+        <a href="#home">Home</a>
+        <a href="#journey">Journey</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#certificates">Certificates</a>
+        <a href="#hackathons">Hackathons</a>
+        <a href="#job-scanner">AI Job-Fit</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+
+    <!-- Main Content Sections -->
+    <main>
+
+      <!-- 1. HERO SECTION (#home) -->
+      <section id="home">
+        <div class="content-wrap">
+          <div class="hero-grid">
+            <div class="hero-content">
+              <h1 class="hero-title">
+                Hi, I'm <span id="hero-owner-name" class="gradient-text">Aditi</span>.<br />
+                Crafting Scalable AI & Web Systems.
+              </h1>
+              <p id="hero-owner-bio" class="hero-bio">
+                Full-Stack Software Engineer & AI Systems Architect passionate about building high-performance web applications, intelligent developer tooling, and interactive 3D digital experiences.
+              </p>
+              <div class="hero-stats">
+                <div class="stat-item">
+                  <span id="stat-projects-count" class="stat-number">12+</span>
+                  <span class="stat-label">Featured Projects</span>
+                </div>
+                <div class="stat-item">
+                  <span id="stat-skills-count" class="stat-number">20+</span>
+                  <span class="stat-label">Tech Stacks</span>
+                </div>
+                <div class="stat-item">
+                  <span id="stat-certs-count" class="stat-number">5+</span>
+                  <span class="stat-label">Certificates</span>
+                </div>
+              </div>
+              <div class="hero-actions">
+                <a href="#projects" class="btn btn-primary">
+                  <span>Explore My Projects</span>
+                  <svg class="icon"><use href="#icon-code"></use></svg>
+                </a>
+                <a href="?print=resume" target="_blank" class="btn btn-outline-print">
+                  <svg class="icon"><use href="#icon-file-text"></use></svg>
+                  <span>Resume (PDF)</span>
+                </a>
+                <a href="?print=cv" target="_blank" class="btn btn-outline-print">
+                  <svg class="icon"><use href="#icon-download"></use></svg>
+                  <span>CV (PDF)</span>
+                </a>
+              </div>
+              <div class="hero-socials">
+                <a id="hero-github-link" href="#" target="_blank" rel="noopener" class="social-link">
+                  <svg class="icon"><use href="#icon-github"></use></svg> GitHub
+                </a>
+                <a id="hero-linkedin-link" href="#" target="_blank" rel="noopener" class="social-link">
+                  <svg class="icon"><use href="#icon-linkedin"></use></svg> LinkedIn
+                </a>
+              </div>
+            </div>
+
+            <!-- 3D Projects Carousel Viewport -->
+            <div class="hero-carousel-container">
+              <button id="carousel-prev-btn" class="carousel-nav-btn left" aria-label="Previous Project">
+                &#10094;
+              </button>
+              <div id="carousel-viewport" class="carousel-viewport"></div>
+              <button id="carousel-next-btn" class="carousel-nav-btn right" aria-label="Next Project">
+                &#10095;
+              </button>
+              <div id="carousel-dots" class="carousel-dots"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. JOURNEY & TIMELINE (#journey) -->
+      <section id="journey">
+        <div class="content-wrap">
+          <div class="section-header">
+            <span class="section-badge">Career & Milestones</span>
+            <h2 class="section-title">Academic & Professional Journey</h2>
+            <p class="section-subtitle">Chronological progression of engineering roles, core specializations, and academic honors.</p>
+          </div>
+          <div class="timeline-container">
+            <div class="timeline-line"></div>
+            <div id="timeline-items-container"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. TECHNICAL SKILLS (#skills) -->
+      <section id="skills">
+        <div class="content-wrap">
+          <div class="section-header">
+            <span class="section-badge">Toolkit & Expertise</span>
+            <h2 class="section-title">Technical Skills & Proficiency</h2>
+            <p class="section-subtitle">Categorized competencies spanning modern full-stack frameworks, databases, and DevOps orchestration.</p>
+          </div>
+          <div id="skills-filter-bar" class="skills-filter-bar"></div>
+          <div id="skills-grid" class="skills-grid"></div>
+        </div>
+      </section>
+
+      <!-- 4. FEATURED PROJECTS HUB (#projects) -->
+      <section id="projects">
+        <div class="content-wrap">
+          <div class="section-header">
+            <span class="section-badge">Portfolio Hub</span>
+            <h2 class="section-title">Featured Engineering Projects</h2>
+            <p class="section-subtitle">Production-grade applications, WebGL digital universes, distributed streaming engines, and open-source tools.</p>
+          </div>
+          <div id="projects-filter-bar" class="skills-filter-bar projects-hub-filters"></div>
+          <div id="projects-grid" class="projects-grid"></div>
+        </div>
+      </section>
+
+      <!-- 5. CERTIFICATES & CREDENTIALS (#certificates) -->
+      <section id="certificates">
+        <div class="content-wrap">
+          <div class="section-header">
+            <span class="section-badge">Verified Credentials</span>
+            <h2 class="section-title">Certifications & Accreditations</h2>
+            <p class="section-subtitle">Industry-recognized specializations issued by leading technological institutions and cloud providers.</p>
+          </div>
+          <div id="certificates-grid" class="certs-grid"></div>
+        </div>
+      </section>
+
+      <!-- 6. HACKATHONS & COMPETITIONS (#hackathons) -->
+      <section id="hackathons">
+        <div class="content-wrap">
+          <div class="section-header">
+            <span class="section-badge">Competitive Engineering</span>
+            <h2 class="section-title">Hackathons & Honors</h2>
+            <p class="section-subtitle">Award-winning solutions engineered under rapid prototyping sprints and global hackathon arenas.</p>
+          </div>
+          <div id="hackathons-grid" class="hackathons-grid"></div>
+        </div>
+      </section>
+
+      <!-- 7. AI RECRUITER JOB-FIT ANALYZER (#job-scanner) -->
+      <section id="job-scanner">
+        <div class="content-wrap">
+          <div class="section-header">
+            <span class="section-badge">Groq AI Powered</span>
+            <h2 class="section-title">Recruiter Job-Fit Analyzer</h2>
+            <p class="section-subtitle">Paste any Job Description (JD) to compute an instant candidate match evaluation, gap analysis, and tailored project alignments.</p>
+          </div>
+          <div class="scanner-card">
+            <form id="job-scanner-form">
+              <div class="scanner-input-group">
+                <label for="job-desc-input" class="form-label">Paste Target Job Description (JD)</label>
+                <textarea id="job-desc-input" class="scanner-textarea" placeholder="Paste requirements, required tech stack, qualifications, or company description here..."></textarea>
+              </div>
+              <button type="submit" id="job-scan-submit-btn" class="btn btn-primary" style="width:100%;">
+                <svg class="icon"><use href="#icon-sparkles"></use></svg> Run Job-Fit Analysis
+              </button>
+            </form>
+
+            <div id="scanner-result" class="scanner-result">
+              <div class="score-display">
+                <div class="score-circle">
+                  <span id="scanner-score-val" class="score-val">88%</span>
+                  <span class="score-label">Match</span>
+                </div>
+                <div id="scanner-summary" class="score-summary"></div>
+              </div>
+
+              <div class="match-columns">
+                <div class="match-box strengths">
+                  <div class="match-box-title" style="color:var(--accent-emerald);">
+                    <svg class="icon"><use href="#icon-sparkles"></use></svg> Key Matching Strengths
+                  </div>
+                  <ul id="scanner-strengths-list" class="match-list"></ul>
+                </div>
+                <div class="match-box gaps">
+                  <div class="match-box-title" style="color:var(--accent-pink);">
+                    <svg class="icon"><use href="#icon-close"></use></svg> Gap Analysis & Potential Blindspots
+                  </div>
+                  <ul id="scanner-gaps-list" class="match-list"></ul>
+                </div>
+              </div>
+
+              <div>
+                <span class="form-label">Recommended Portfolio Projects to Highlight:</span>
+                <div id="scanner-projects-list" style="display:flex;gap:10px;flex-wrap:wrap;margin-top:8px;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 8. CONTACT & INQUIRIES (#contact) -->
+      <section id="contact">
+        <div class="content-wrap">
+          <div class="section-header">
+            <span class="section-badge">Get in Touch</span>
+            <h2 class="section-title">Let's Build Something Exceptional</h2>
+            <p class="section-subtitle">Interested in discussing new opportunities, consulting, or engineering collaboration? Drop a direct note below.</p>
+          </div>
+
+          <div class="contact-grid">
+            <div class="contact-info-card">
+              <div class="contact-method">
+                <div class="method-icon"><svg class="icon"><use href="#icon-briefcase"></use></svg></div>
+                <div>
+                  <div class="method-label">Direct Email</div>
+                  <a id="contact-email-text" href="mailto:aditi.tech@example.com" class="method-val">aditi.tech@example.com</a>
+                </div>
+              </div>
+              <div class="contact-method">
+                <div class="method-icon"><svg class="icon"><use href="#icon-code"></use></svg></div>
+                <div>
+                  <div class="method-label">Location Base</div>
+                  <div id="contact-location-text" class="method-val">Bengaluru, Karnataka, India</div>
+                </div>
+              </div>
+              <div class="contact-method">
+                <div class="method-icon"><svg class="icon"><use href="#icon-external"></use></svg></div>
+                <div>
+                  <div class="method-label">Availability</div>
+                  <div class="method-val" style="color:var(--accent-emerald);">Open to Senior Roles & Contracts</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="contact-form-card">
+              <form id="contact-form">
+                <div class="form-group">
+                  <label for="contact-name" class="form-label">Your Name *</label>
+                  <input type="text" id="contact-name" class="form-input" placeholder="e.g. Alex Taylor" required />
+                </div>
+                <div class="form-group">
+                  <label for="contact-email" class="form-label">Your Email *</label>
+                  <input type="email" id="contact-email" class="form-input" placeholder="e.g. alex@company.com" required />
+                </div>
+                <div class="form-group">
+                  <label for="contact-subject" class="form-label">Subject</label>
+                  <input type="text" id="contact-subject" class="form-input" placeholder="Role opportunity / Consulting inquiry" />
+                </div>
+                <div class="form-group">
+                  <label for="contact-message" class="form-label">Message *</label>
+                  <textarea id="contact-message" class="form-input" style="min-height:110px;resize:vertical;" placeholder="Write your message here..." required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width:100%;">
+                  <span>Dispatch Message</span>
+                  <svg class="icon"><use href="#icon-send"></use></svg>
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-inner">
+        <div>
+          &copy; 2025 All Rights Reserved. Built with Vanilla ES6+, Vite, Supabase, & Groq Llama 3.3.
+        </div>
+        <div>
+          <a href="#home" style="color:var(--accent-cyan);text-decoration:none;">Back to Top &uarr;</a>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- FLOATING AI ASSISTANT CHATBOT (Bottom-Right Widget) -->
+  <div class="ai-chatbot-widget">
+    <button id="chatbot-toggle-btn" class="chatbot-toggle-btn" title="Chat with AI Assistant" aria-label="Open AI Chat">
+      <svg class="icon" style="width:28px;height:28px;"><use href="#icon-bot"></use></svg>
+      <span class="chatbot-badge"></span>
+    </button>
+
+    <div id="chatbot-drawer" class="chatbot-drawer">
+      <div class="chat-header">
+        <div class="chat-title-wrap">
+          <div class="chat-indicator"></div>
+          <span class="chat-title">AI Assistant</span>
+        </div>
+        <button id="chatbot-close-btn" class="icon-btn" style="width:30px;height:30px;"><svg class="icon" style="width:16px;height:16px;"><use href="#icon-close"></use></svg></button>
+      </div>
+
+      <div id="chatbot-messages" class="chat-messages">
+        <div class="chat-bubble bot">
+          Hello! I am the portfolio AI Assistant. Ask me about technical skills, featured engineering projects, career milestones, or how to get in touch!
+        </div>
+      </div>
+
+      <div id="chatbot-suggestions" class="chat-suggestions">
+        <button class="suggestion-pill">What are your top skills?</button>
+        <button class="suggestion-pill">Tell me about featured projects</button>
+        <button class="suggestion-pill">Work experience snapshot</button>
+        <button class="suggestion-pill">How can I contact you?</button>
+      </div>
+
+      <form id="chatbot-form" class="chat-input-row">
+        <input type="text" id="chatbot-input" class="chat-input" placeholder="Ask anything about the developer..." autocomplete="off" />
+        <button type="submit" class="chat-send-btn"><svg class="icon"><use href="#icon-send"></use></svg></button>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL 1: Project Details Deep Dive -->
+  <div id="project-detail-modal" class="modal-overlay">
+    <div class="modal-dialog" style="max-width:700px;">
+      <button class="icon-btn modal-close-btn" style="position:absolute;top:20px;right:20px;"><svg class="icon"><use href="#icon-close"></use></svg></button>
+      <img id="modal-project-img" src="" alt="Project Preview" style="width:100%;height:220px;object-fit:cover;border-radius:var(--radius-md);margin-bottom:16px;">
+      <span id="modal-project-cat" class="section-badge" style="margin-bottom:8px;"></span>
+      <h2 id="modal-project-title" style="font-size:1.6rem;font-weight:700;margin-bottom:12px;"></h2>
+      <p id="modal-project-desc" style="color:var(--text-secondary);font-size:0.95rem;line-height:1.7;margin-bottom:20px;"></p>
+      <div id="modal-project-tags" class="project-tags" style="margin-bottom:24px;"></div>
+      <div style="display:flex;gap:12px;">
+        <a id="modal-project-live" href="#" target="_blank" rel="noopener" class="btn btn-primary"><svg class="icon"><use href="#icon-external"></use></svg> Live Demo</a>
+        <a id="modal-project-github" href="#" target="_blank" rel="noopener" class="btn btn-secondary"><svg class="icon"><use href="#icon-github"></use></svg> Source Code</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 2: Image Lightbox -->
+  <div id="image-lightbox-modal" class="modal-overlay">
+    <div class="modal-dialog" style="max-width:850px;background:transparent;border:none;box-shadow:none;text-align:center;">
+      <button class="icon-btn modal-close-btn" style="position:absolute;top:-10px;right:0;background:#000;"><svg class="icon"><use href="#icon-close"></use></svg></button>
+      <img id="lightbox-img" src="" alt="Credential Lightbox" style="max-width:100%;max-height:80vh;border-radius:var(--radius-md);box-shadow:var(--shadow-md);">
+    </div>
+  </div>
+
+  <!-- MODAL 3: Admin Passcode Authentication -->
+  <div id="admin-auth-modal" class="modal-overlay">
+    <div class="modal-dialog">
+      <button id="admin-auth-close" class="icon-btn modal-close-btn" style="position:absolute;top:20px;right:20px;"><svg class="icon"><use href="#icon-close"></use></svg></button>
+      <div style="text-align:center;margin-bottom:24px;">
+        <div style="width:50px;height:50px;border-radius:50%;background:rgba(0,240,255,0.1);color:var(--accent-cyan);display:flex;align-items:center;justify-content:center;margin:0 auto 14px auto;">
+          <svg class="icon" style="width:24px;height:24px;"><use href="#icon-lock"></use></svg>
+        </div>
+        <h2 style="font-size:1.4rem;font-weight:700;">Admin Console Authentication</h2>
+        <p style="color:var(--text-secondary);font-size:0.88rem;margin-top:4px;">Enter passcode to unlock portfolio management.</p>
+      </div>
+
+      <form id="admin-auth-form">
+        <div class="form-group">
+          <label for="admin-passcode-input" class="form-label">Admin Passcode</label>
+          <input type="password" id="admin-passcode-input" class="form-input" placeholder="Enter security passcode..." required />
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%;">
+          <span>Unlock Admin Panel</span>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL 4: Admin Management Console Dashboard -->
+  <div id="admin-dashboard-modal" class="modal-overlay">
+    <div class="modal-dialog admin-dashboard-dialog">
+      <div class="admin-header">
+        <div style="display:flex;align-items:center;gap:12px;">
+          <svg class="icon" style="color:var(--accent-cyan);"><use href="#icon-lock"></use></svg>
+          <h2 style="font-size:1.2rem;font-weight:700;">Portfolio Administration Console</h2>
+        </div>
+        <button id="admin-dashboard-close" class="icon-btn modal-close-btn"><svg class="icon"><use href="#icon-close"></use></svg></button>
+      </div>
+
+      <!-- Navigation Tabs -->
+      <div class="admin-nav-tabs">
+        <button class="admin-tab active" data-pane="stacks">Pane A: Tech Stacks</button>
+        <button class="admin-tab" data-pane="projects">Pane B: Projects</button>
+        <button class="admin-tab" data-pane="messages">Pane C: Messages Inbox</button>
+        <button class="admin-tab" data-pane="settings">Pane D: Settings & AI</button>
+        <button class="admin-tab" data-pane="sync">Pane E: Cloud Sync & Backup</button>
+        <button class="admin-tab" data-pane="timeline">Pane F: Timeline</button>
+        <button class="admin-tab" data-pane="certs">Pane G: Certificates</button>
+        <button class="admin-tab" data-pane="hacks">Pane H: Hackathons</button>
+      </div>
+
+      <!-- Content Area -->
+      <div class="admin-content">
+
+        <!-- PANE A: Tech Stacks -->
+        <div id="admin-pane-stacks" class="admin-pane active">
+          <h3 style="margin-bottom:16px;">Add New Skill</h3>
+          <form id="admin-add-skill-form" style="display:grid;grid-template-columns:2fr 2fr 1fr 1fr;gap:12px;margin-bottom:28px;">
+            <input type="text" id="admin-skill-name" class="form-input" placeholder="Skill Name (e.g. Go, GraphQL)" required />
+            <input type="text" id="admin-skill-cat" class="form-input" placeholder="Category (e.g. Backend, Frontend)" required />
+            <input type="number" id="admin-skill-level" class="form-input" placeholder="Level (0-100)" min="1" max="100" value="85" />
+            <button type="submit" class="btn btn-primary btn-sm"><svg class="icon"><use href="#icon-plus"></use></svg> Add</button>
+          </form>
+
+          <h3>Configured Tech Stacks</h3>
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Skill</th>
+                <th>Category</th>
+                <th>Proficiency</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="admin-skills-table-body"></tbody>
+          </table>
+        </div>
+
+        <!-- PANE B: Projects -->
+        <div id="admin-pane-projects" class="admin-pane">
+          <h3 style="margin-bottom:16px;">Add New Project</h3>
+          <form id="admin-add-project-form" style="display:flex;flex-direction:column;gap:14px;margin-bottom:28px;">
+            <div style="display:grid;grid-template-columns:1.5fr 1fr;gap:12px;">
+              <input type="text" id="admin-proj-title" class="form-input" placeholder="Project Title *" required />
+              <input type="text" id="admin-proj-cat" class="form-input" placeholder="Category (e.g. AI & Full-Stack)" />
+            </div>
+            <div>
+              <input type="text" id="admin-proj-tags" class="form-input" placeholder="Tags (comma separated: React, Python, Three.js)" />
+            </div>
+            <div>
+              <div style="display:flex;justify-content:space-between;margin-bottom:6px;">
+                <span class="form-label" style="margin-bottom:0;">Project Description *</span>
+                <button type="button" id="admin-ai-suggest-proj-btn" class="btn btn-secondary btn-sm" style="padding:4px 12px;font-size:0.8rem;">
+                  <svg class="icon"><use href="#icon-sparkles"></use></svg> AI Suggest Description
+                </button>
+              </div>
+              <textarea id="admin-proj-desc" class="form-input" style="min-height:80px;resize:vertical;" placeholder="Key architectural highlights and technologies..." required></textarea>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+              <input type="url" id="admin-proj-github" class="form-input" placeholder="GitHub URL" />
+              <input type="url" id="admin-proj-live" class="form-input" placeholder="Live Demo URL" />
+            </div>
+            <div style="display:flex;flex-direction:column;gap:6px;">
+              <label class="form-label" style="margin-bottom:0;">Project Cover Image (Choose file from device or enter URL)</label>
+              <div style="display:flex;align-items:center;gap:12px;">
+                <input type="file" id="admin-proj-image-file" accept="image/*" class="form-input" style="padding:7px;" />
+                <span style="color:var(--text-muted);font-size:0.85rem;">or</span>
+                <input type="url" id="admin-proj-image" class="form-input" placeholder="Image URL (Unsplash or direct)" />
+              </div>
+              <div id="admin-proj-image-preview-wrap" style="display:none;margin-top:6px;">
+                <img id="admin-proj-image-preview" src="" alt="Project Cover Preview" style="max-height:110px;border-radius:var(--radius-sm);object-fit:cover;border:1px solid var(--card-border);" />
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary" style="align-self:flex-start;">
+              <svg class="icon"><use href="#icon-plus"></use></svg> Save Project
+            </button>
+          </form>
+
+          <h3>Active Projects</h3>
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Category</th>
+                <th>Tags</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="admin-projects-table-body"></tbody>
+          </table>
+        </div>
+
+        <!-- PANE C: Messages Inbox -->
+        <div id="admin-pane-messages" class="admin-pane">
+          <h3 style="margin-bottom:16px;">Contact Inquiries & Inbox</h3>
+          <div id="admin-messages-container"></div>
+        </div>
+
+        <!-- PANE D: Settings & AI -->
+        <div id="admin-pane-settings" class="admin-pane">
+          <h3 style="margin-bottom:16px;">Profile & AI Engine Configuration</h3>
+          <form id="admin-settings-form" style="display:flex;flex-direction:column;gap:14px;">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+              <div>
+                <label class="form-label">Developer Display Name</label>
+                <input type="text" id="admin-set-name" class="form-input" required />
+              </div>
+              <div>
+                <label class="form-label">Contact Email</label>
+                <input type="email" id="admin-set-email" class="form-input" required />
+              </div>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+              <div>
+                <label class="form-label">Location / Timezone</label>
+                <input type="text" id="admin-set-loc" class="form-input" />
+              </div>
+              <div>
+                <label class="form-label">Groq API Key (starts with gsk_)</label>
+                <input type="password" id="admin-set-groq" class="form-input" placeholder="gsk_..." />
+              </div>
+            </div>
+            <div>
+              <label class="form-label">Developer Bio & Headline</label>
+              <textarea id="admin-set-bio" class="form-input" style="min-height:90px;resize:vertical;" required></textarea>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+              <div>
+                <label class="form-label">GitHub Profile URL</label>
+                <input type="url" id="admin-set-github" class="form-input" />
+              </div>
+              <div>
+                <label class="form-label">LinkedIn Profile URL</label>
+                <input type="url" id="admin-set-linkedin" class="form-input" />
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary" style="align-self:flex-start;margin-top:8px;">
+              Save Profile & AI Settings
+            </button>
+          </form>
+        </div>
+
+        <!-- PANE E: Cloud Sync & Backup -->
+        <div id="admin-pane-sync" class="admin-pane">
+          <h3 style="margin-bottom:16px;">Supabase Cloud Sync & Offline Database Engine</h3>
+          <p style="color:var(--text-secondary);font-size:0.95rem;margin-bottom:24px;">
+            The application utilizes an offline-first resilient architecture. All local reads/writes happen instantaneously and synchronize with Supabase PostgreSQL cloud tables.
+          </p>
+          <div style="display:flex;flex-direction:column;gap:16px;max-width:500px;">
+            <button id="admin-sync-cloud-btn" class="btn btn-primary">
+              <svg class="icon"><use href="#icon-sync"></use></svg> Sync Local Data to Cloud Now
+            </button>
+            <button id="admin-copy-backup-btn" class="btn btn-secondary">
+              <svg class="icon"><use href="#icon-download"></use></svg> Copy Database Backup (JSON)
+            </button>
+            <button id="admin-restore-backup-btn" class="btn btn-secondary">
+              <svg class="icon"><use href="#icon-sparkles"></use></svg> Restore from Backup JSON
+            </button>
+            <button id="admin-clear-cache-btn" class="btn btn-secondary" style="border-color:var(--accent-pink);color:var(--accent-pink);">
+              <svg class="icon"><use href="#icon-trash"></use></svg> Clear Local Cache & Reset Defaults
+            </button>
+          </div>
+        </div>
+
+        <!-- PANE F: Timeline & Journey -->
+        <div id="admin-pane-timeline" class="admin-pane">
+          <h3 style="margin-bottom:16px;">Add Journey Milestone</h3>
+          <form id="admin-add-timeline-form" style="display:flex;flex-direction:column;gap:12px;margin-bottom:28px;">
+            <div style="display:grid;grid-template-columns:1.5fr 1.5fr 1fr 1fr;gap:12px;">
+              <input type="text" id="admin-timeline-title" class="form-input" placeholder="Role / Degree (e.g. Senior SDE) *" required />
+              <input type="text" id="admin-timeline-company" class="form-input" placeholder="Company / University *" required />
+              <input type="text" id="admin-timeline-dates" class="form-input" placeholder="Dates (e.g. 2023 — Present) *" required />
+              <select id="admin-timeline-type" class="form-input">
+                <option value="experience">Experience</option>
+                <option value="education">Education</option>
+              </select>
+            </div>
+            <textarea id="admin-timeline-desc" class="form-input" style="min-height:75px;resize:vertical;" placeholder="Key achievements, technologies, or curriculum summary..." required></textarea>
+            <button type="submit" class="btn btn-primary" style="align-self:flex-start;">
+              <svg class="icon"><use href="#icon-plus"></use></svg> Add Milestone
+            </button>
+          </form>
+
+          <h3>Career & Academic Milestones</h3>
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Title / Role</th>
+                <th>Institution / Company</th>
+                <th>Date Range</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="admin-timeline-table-body"></tbody>
+          </table>
+        </div>
+
+        <!-- PANE G: Certificates -->
+        <div id="admin-pane-certs" class="admin-pane">
+          <h3 style="margin-bottom:16px;">Add Certificate Credential</h3>
+          <form id="admin-add-cert-form" style="display:flex;flex-direction:column;gap:12px;margin-bottom:28px;">
+            <div style="display:grid;grid-template-columns:1.5fr 1.5fr 1fr;gap:12px;">
+              <input type="text" id="admin-cert-title" class="form-input" placeholder="Certificate Name (e.g. AWS Solutions Architect) *" required />
+              <input type="text" id="admin-cert-issuer" class="form-input" placeholder="Issuing Organization (e.g. AWS, Meta) *" required />
+              <input type="text" id="admin-cert-date" class="form-input" placeholder="Year (e.g. 2024) *" required />
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+              <input type="url" id="admin-cert-url" class="form-input" placeholder="Verification Credential URL" />
+              <input type="text" id="admin-cert-skills" class="form-input" placeholder="Skills Covered (comma separated)" />
+            </div>
+            <div style="display:flex;flex-direction:column;gap:6px;">
+              <label class="form-label" style="margin-bottom:0;">Certificate Image (Choose file from device or enter URL)</label>
+              <div style="display:flex;align-items:center;gap:12px;">
+                <input type="file" id="admin-cert-image-file" accept="image/*" class="form-input" style="padding:7px;" />
+                <span style="color:var(--text-muted);font-size:0.85rem;">or</span>
+                <input type="url" id="admin-cert-image" class="form-input" placeholder="Image URL (direct or Unsplash)" />
+              </div>
+              <div id="admin-cert-image-preview-wrap" style="display:none;margin-top:6px;">
+                <img id="admin-cert-image-preview" src="" alt="Certificate Preview" style="max-height:100px;border-radius:var(--radius-sm);object-fit:cover;border:1px solid var(--card-border);" />
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary" style="align-self:flex-start;">
+              <svg class="icon"><use href="#icon-plus"></use></svg> Add Certificate
+            </button>
+          </form>
+
+          <h3>Certificates & Accreditations</h3>
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Certificate</th>
+                <th>Issuer</th>
+                <th>Year</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="admin-certs-table-body"></tbody>
+          </table>
+        </div>
+
+        <!-- PANE H: Hackathons -->
+        <div id="admin-pane-hacks" class="admin-pane">
+          <h3 style="margin-bottom:16px;">Add Hackathon Achievement</h3>
+          <form id="admin-add-hack-form" style="display:flex;flex-direction:column;gap:12px;margin-bottom:28px;">
+            <div style="display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:12px;">
+              <input type="text" id="admin-hack-title" class="form-input" placeholder="Hackathon Name *" required />
+              <input type="text" id="admin-hack-organizer" class="form-input" placeholder="Organizer (e.g. MLH, Devfolio) *" required />
+              <input type="text" id="admin-hack-date" class="form-input" placeholder="Date (e.g. October 2024) *" required />
+              <input type="text" id="admin-hack-role" class="form-input" placeholder="Team Role (e.g. Lead Architect)" />
+            </div>
+            <div style="display:grid;grid-template-columns:1.5fr 1.5fr 2fr;gap:12px;">
+              <input type="text" id="admin-hack-project" class="form-input" placeholder="Project Name Built *" required />
+              <input type="text" id="admin-hack-achievement" class="form-input" placeholder="Achievement (e.g. 1st Place Winner) *" required />
+              <input type="text" id="admin-hack-tech" class="form-input" placeholder="Technologies (e.g. Next.js, Groq API)" />
+            </div>
+            <textarea id="admin-hack-desc" class="form-input" style="min-height:75px;resize:vertical;" placeholder="Project architecture summary and competition outcome..." required></textarea>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+              <input type="url" id="admin-hack-project-url" class="form-input" placeholder="Project Demo / GitHub URL" />
+              <input type="url" id="admin-hack-cert-url" class="form-input" placeholder="Certificate / Proof URL" />
+            </div>
+            <div style="display:flex;flex-direction:column;gap:6px;">
+              <label class="form-label" style="margin-bottom:0;">Hackathon Banner / Image (Choose file from device or enter URL)</label>
+              <div style="display:flex;align-items:center;gap:12px;">
+                <input type="file" id="admin-hack-image-file" accept="image/*" class="form-input" style="padding:7px;" />
+                <span style="color:var(--text-muted);font-size:0.85rem;">or</span>
+                <input type="url" id="admin-hack-image" class="form-input" placeholder="Image URL" />
+              </div>
+              <div id="admin-hack-image-preview-wrap" style="display:none;margin-top:6px;">
+                <img id="admin-hack-image-preview" src="" alt="Hackathon Preview" style="max-height:100px;border-radius:var(--radius-sm);object-fit:cover;border:1px solid var(--card-border);" />
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary" style="align-self:flex-start;">
+              <svg class="icon"><use href="#icon-plus"></use></svg> Add Hackathon Entry
+            </button>
+          </form>
+
+          <h3>Hackathons & Competitions</h3>
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Hackathon</th>
+                <th>Achievement</th>
+                <th>Project Name</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="admin-hacks-table-body"></tbody>
+          </table>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- PRINT ROOT: ATS-Friendly Resume/CV view -->
+  <div id="print-root"></div>
+
+  <!-- Main JavaScript Application Module -->
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

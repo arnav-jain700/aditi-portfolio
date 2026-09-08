@@ -1,0 +1,17 @@
+# Developer Portfolio - LLM Reference
+
+## Overview
+This is the personal portfolio of Aditi, a Full-Stack Engineer and AI Developer specializing in modern web development, scalable cloud systems, machine learning integration, and interactive 3D web applications.
+
+## Core Competencies
+- Frontend: JavaScript (ES6+), TypeScript, React, Vue, HTML5 Canvas, WebGL, Tailwind CSS, Responsive UX/UI.
+- Backend: Node.js, Express, Python, FastAPI, Go, RESTful APIs, GraphQL, Serverless Functions.
+- Databases: PostgreSQL, Supabase, Redis, MongoDB, Vector DBs (pgvector, Pinecone).
+- DevOps & Cloud: Docker, Kubernetes, CI/CD pipelines, AWS, Azure, Vercel, Git.
+
+## Key Sections
+- Journey: Educational background in Computer Science and software engineering experience.
+- Projects: Full-stack applications, AI integrations, WebGL visualizers, open-source utilities.
+- Certificates: Industry credentials across Cloud, Deep Learning, and Web Architecture.
+- Hackathons: Award-winning hackathon submissions and technical challenges.
+- Recruiter Job-Fit Analyzer: AI-assisted matching system evaluating candidate suitability for job descriptions.
