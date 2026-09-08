@@ -27,3 +27,8 @@ dist-ssr
 .env
 .env.*
 !.env.example
+
+# Specification and sensitive guide documents
+PORTFOLIO_MASTER_GUIDE.md
+*PORTFOLIO_MASTER_GUIDE*
+
