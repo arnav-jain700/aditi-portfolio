@@ -225,14 +225,14 @@ function renderHero() {
 
   // Live Stat Counters
   const countProjectsEl = document.getElementById('stat-projects-count');
-  if (countProjectsEl) countProjectsEl.textContent = `${projects.length}+`;
+  if (countProjectsEl) countProjectsEl.textContent = `${projects.length}`;
 
   const countSkillsEl = document.getElementById('stat-skills-count');
-  if (countSkillsEl) countSkillsEl.textContent = `${tech.length}+`;
+  if (countSkillsEl) countSkillsEl.textContent = `${tech.length}`;
 
   const certs = getCertificates();
   const countCertsEl = document.getElementById('stat-certs-count');
-  if (countCertsEl) countCertsEl.textContent = `${certs.length}+`;
+  if (countCertsEl) countCertsEl.textContent = `${certs.length}`;
 
   // Social Links
   const githubLink = document.getElementById('hero-github-link');
