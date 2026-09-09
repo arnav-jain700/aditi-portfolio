@@ -22,6 +22,7 @@ import {
   deleteMessage,
   toggleMessageRead,
   syncWithCloud,
+  subscribeToCloudChanges,
   exportBackupJSON,
   restoreFromBackupJSON,
   clearLocalCache
@@ -1596,12 +1597,13 @@ document.addEventListener('DOMContentLoaded', () => {
   initModalClosers();
   checkPrintRoute();
 
-  // Try background sync with cloud
+  // Try background sync with cloud and listen for realtime updates
   if (isSupabaseConfigured()) {
     syncWithCloud().then(res => {
       if (res.success) {
         console.log('Synchronized with Supabase Cloud');
       }
     });
+    subscribeToCloudChanges();
   }
 });

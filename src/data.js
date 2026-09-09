@@ -20,8 +20,8 @@ const DEFAULT_SETTINGS = {
   location: 'Bengaluru, Karnataka, India',
   linkedin: 'https://www.linkedin.com/in/aditi-codes',
   github: 'https://github.com/aditi-codes',
-  codolio: 'https://codolio.com/profile/aditi',
-  medium: 'https://medium.com/@aditi_codes',
+  codolio: '',
+  medium: '',
   groqKey: '',
   geminiKey: '',
   categories: ['Frontend', 'Backend', 'Databases', 'DevOps', 'AI & ML', 'Version Control']
@@ -272,6 +272,203 @@ export function getMessages() {
   return getLocal(STORAGE_KEYS.MESSAGES, DEFAULT_MESSAGES);
 }
 
+// --- Supabase DB <-> Frontend Bidirectional Field Mappers ---
+// PostgreSQL folds unquoted table columns into lowercase, so we map
+// between frontend camelCase model properties and DB lowercase columns.
+
+function toDbSettings(s) {
+  return {
+    id: s.id || 'main_settings',
+    ownername: s.ownerName || s.ownername || 'Aditi',
+    ownerbio: s.ownerBio || s.ownerbio || '',
+    email: s.email || '',
+    location: s.location || '',
+    linkedin: s.linkedin || '',
+    github: s.github || '',
+    codolio: s.codolio || '',
+    medium: s.medium || '',
+    groqkey: s.groqKey || s.groqkey || '',
+    geminikey: s.geminiKey || s.geminikey || '',
+    categories: Array.isArray(s.categories) ? s.categories : ['Frontend', 'Backend', 'Databases', 'DevOps', 'AI & ML', 'Version Control']
+  };
+}
+
+function fromDbSettings(row) {
+  if (!row) return null;
+  return {
+    id: row.id || 'main_settings',
+    ownerName: row.ownername ?? row.ownerName ?? 'Aditi',
+    ownerBio: row.ownerbio ?? row.ownerBio ?? '',
+    email: row.email ?? '',
+    location: row.location ?? '',
+    linkedin: row.linkedin ?? '',
+    github: row.github ?? '',
+    codolio: row.codolio ?? '',
+    medium: row.medium ?? '',
+    groqKey: row.groqkey ?? row.groqKey ?? '',
+    geminiKey: row.geminikey ?? row.geminiKey ?? '',
+    categories: Array.isArray(row.categories) ? row.categories : ['Frontend', 'Backend', 'Databases', 'DevOps', 'AI & ML', 'Version Control']
+  };
+}
+
+function toDbTech(t) {
+  return {
+    id: t.id,
+    name: t.name || '',
+    category: t.category || '',
+    level: Number(t.level) || 0,
+    icon: t.icon || 'code'
+  };
+}
+
+function fromDbTech(row) {
+  if (!row) return null;
+  return {
+    id: row.id,
+    name: row.name ?? '',
+    category: row.category ?? '',
+    level: Number(row.level) || 0,
+    icon: row.icon || 'code'
+  };
+}
+
+function toDbProject(p) {
+  return {
+    id: p.id,
+    title: p.title || '',
+    category: p.category || '',
+    description: p.description || '',
+    tags: Array.isArray(p.tags) ? p.tags : [],
+    githuburl: p.githubUrl ?? p.githuburl ?? '',
+    liveurl: p.liveUrl ?? p.liveurl ?? '',
+    image: p.image ?? ''
+  };
+}
+
+function fromDbProject(row) {
+  if (!row) return null;
+  return {
+    id: row.id,
+    title: row.title ?? '',
+    category: row.category ?? '',
+    description: row.description ?? '',
+    tags: Array.isArray(row.tags) ? row.tags : [],
+    githubUrl: row.githuburl ?? row.githubUrl ?? '',
+    liveUrl: row.liveurl ?? row.liveUrl ?? '',
+    image: row.image ?? ''
+  };
+}
+
+function toDbTimeline(t) {
+  return {
+    id: t.id,
+    title: t.title || '',
+    company: t.company || '',
+    role: t.role || '',
+    daterange: t.dateRange ?? t.daterange ?? '',
+    type: t.type || 'experience',
+    description: t.description || ''
+  };
+}
+
+function fromDbTimeline(row) {
+  if (!row) return null;
+  return {
+    id: row.id,
+    title: row.title ?? '',
+    company: row.company ?? '',
+    role: row.role ?? '',
+    dateRange: row.daterange ?? row.dateRange ?? '',
+    type: row.type ?? 'experience',
+    description: row.description ?? ''
+  };
+}
+
+function toDbCertificate(c) {
+  return {
+    id: c.id,
+    title: c.title || '',
+    issuer: c.issuer || '',
+    date: c.date || '',
+    credentialurl: c.credentialUrl ?? c.credentialurl ?? '',
+    skills: c.skills || '',
+    image: c.image ?? ''
+  };
+}
+
+function fromDbCertificate(row) {
+  if (!row) return null;
+  return {
+    id: row.id,
+    title: row.title ?? '',
+    issuer: row.issuer ?? '',
+    date: row.date ?? '',
+    credentialUrl: row.credentialurl ?? row.credentialUrl ?? '',
+    skills: row.skills ?? '',
+    image: row.image ?? ''
+  };
+}
+
+function toDbHackathon(h) {
+  return {
+    id: h.id,
+    title: h.title || '',
+    organizer: h.organizer || '',
+    date: h.date || '',
+    role: h.role || '',
+    projectname: h.projectName ?? h.projectname ?? '',
+    achievement: h.achievement || '',
+    description: h.description || '',
+    technologies: h.technologies || '',
+    projecturl: h.projectUrl ?? h.projecturl ?? '',
+    certificateurl: h.certificateUrl ?? h.certificateurl ?? '',
+    image: h.image ?? ''
+  };
+}
+
+function fromDbHackathon(row) {
+  if (!row) return null;
+  return {
+    id: row.id,
+    title: row.title ?? '',
+    organizer: row.organizer ?? '',
+    date: row.date ?? '',
+    role: row.role ?? '',
+    projectName: row.projectname ?? row.projectName ?? '',
+    achievement: row.achievement ?? '',
+    description: row.description ?? '',
+    technologies: row.technologies ?? '',
+    projectUrl: row.projecturl ?? row.projectUrl ?? '',
+    certificateUrl: row.certificateurl ?? row.certificateUrl ?? '',
+    image: row.image ?? ''
+  };
+}
+
+function toDbMessage(m) {
+  return {
+    id: m.id,
+    name: m.name || '',
+    email: m.email || '',
+    subject: m.subject || '',
+    message: m.message || '',
+    timestamp: m.timestamp || new Date().toISOString(),
+    unread: typeof m.unread === 'boolean' ? m.unread : true
+  };
+}
+
+function fromDbMessage(row) {
+  if (!row) return null;
+  return {
+    id: row.id,
+    name: row.name ?? '',
+    email: row.email ?? '',
+    subject: row.subject ?? '',
+    message: row.message ?? '',
+    timestamp: row.timestamp ?? '',
+    unread: typeof row.unread === 'boolean' ? row.unread : true
+  };
+}
+
 // Direct Async Save & Delete Methods with Cloud Sync
 export async function saveSettings(newSettings) {
   const current = getSettings();
@@ -281,7 +478,8 @@ export async function saveSettings(newSettings) {
 
   if (isSupabaseConfigured()) {
     try {
-      await supabase.from('portfolio_settings').upsert([merged]);
+      const { error } = await supabase.from('portfolio_settings').upsert([toDbSettings(merged)]);
+      if (error) console.warn('Supabase settings upsert error:', error);
     } catch (err) {
       console.warn('Supabase settings upsert failed:', err);
     }
@@ -302,7 +500,8 @@ export async function saveTechStack(item) {
 
   if (isSupabaseConfigured()) {
     try {
-      await supabase.from('portfolio_tech_stacks').upsert([item]);
+      const { error } = await supabase.from('portfolio_tech_stacks').upsert([toDbTech(item)]);
+      if (error) console.warn('Supabase tech stack upsert error:', error);
     } catch (err) {
       console.warn('Supabase tech stack upsert failed:', err);
     }
@@ -318,7 +517,8 @@ export async function deleteTechStack(id) {
 
   if (isSupabaseConfigured()) {
     try {
-      await supabase.from('portfolio_tech_stacks').delete().eq('id', id);
+      const { error } = await supabase.from('portfolio_tech_stacks').delete().eq('id', id);
+      if (error) console.warn('Supabase tech stack delete error:', error);
     } catch (err) {
       console.warn('Supabase tech stack delete failed:', err);
     }
@@ -338,7 +538,8 @@ export async function saveProject(item) {
 
   if (isSupabaseConfigured()) {
     try {
-      await supabase.from('portfolio_projects').upsert([item]);
+      const { error } = await supabase.from('portfolio_projects').upsert([toDbProject(item)]);
+      if (error) console.warn('Supabase project upsert error:', error);
     } catch (err) {
       console.warn('Supabase project upsert failed:', err);
     }
@@ -354,7 +555,8 @@ export async function deleteProject(id) {
 
   if (isSupabaseConfigured()) {
     try {
-      await supabase.from('portfolio_projects').delete().eq('id', id);
+      const { error } = await supabase.from('portfolio_projects').delete().eq('id', id);
+      if (error) console.warn('Supabase project delete error:', error);
     } catch (err) {
       console.warn('Supabase project delete failed:', err);
     }
@@ -374,7 +576,8 @@ export async function saveTimelineItem(item) {
 
   if (isSupabaseConfigured()) {
     try {
-      await supabase.from('portfolio_timeline').upsert([item]);
+      const { error } = await supabase.from('portfolio_timeline').upsert([toDbTimeline(item)]);
+      if (error) console.warn('Supabase timeline upsert error:', error);
     } catch (err) {
       console.warn('Supabase timeline upsert failed:', err);
     }
@@ -390,7 +593,8 @@ export async function deleteTimelineItem(id) {
 
   if (isSupabaseConfigured()) {
     try {
-      await supabase.from('portfolio_timeline').delete().eq('id', id);
+      const { error } = await supabase.from('portfolio_timeline').delete().eq('id', id);
+      if (error) console.warn('Supabase timeline delete error:', error);
     } catch (err) {
       console.warn('Supabase timeline delete failed:', err);
     }
@@ -410,7 +614,8 @@ export async function saveCertificate(item) {
 
   if (isSupabaseConfigured()) {
     try {
-      await supabase.from('portfolio_certificates').upsert([item]);
+      const { error } = await supabase.from('portfolio_certificates').upsert([toDbCertificate(item)]);
+      if (error) console.warn('Supabase certificate upsert error:', error);
     } catch (err) {
       console.warn('Supabase certificate upsert failed:', err);
     }
@@ -426,7 +631,8 @@ export async function deleteCertificate(id) {
 
   if (isSupabaseConfigured()) {
     try {
-      await supabase.from('portfolio_certificates').delete().eq('id', id);
+      const { error } = await supabase.from('portfolio_certificates').delete().eq('id', id);
+      if (error) console.warn('Supabase certificate delete error:', error);
     } catch (err) {
       console.warn('Supabase certificate delete failed:', err);
     }
@@ -446,7 +652,8 @@ export async function saveHackathon(item) {
 
   if (isSupabaseConfigured()) {
     try {
-      await supabase.from('portfolio_hackathons').upsert([item]);
+      const { error } = await supabase.from('portfolio_hackathons').upsert([toDbHackathon(item)]);
+      if (error) console.warn('Supabase hackathon upsert error:', error);
     } catch (err) {
       console.warn('Supabase hackathon upsert failed:', err);
     }
@@ -462,7 +669,8 @@ export async function deleteHackathon(id) {
 
   if (isSupabaseConfigured()) {
     try {
-      await supabase.from('portfolio_hackathons').delete().eq('id', id);
+      const { error } = await supabase.from('portfolio_hackathons').delete().eq('id', id);
+      if (error) console.warn('Supabase hackathon delete error:', error);
     } catch (err) {
       console.warn('Supabase hackathon delete failed:', err);
     }
@@ -477,7 +685,8 @@ export async function saveMessage(msg) {
 
   if (isSupabaseConfigured()) {
     try {
-      await supabase.from('portfolio_messages').upsert([msg]);
+      const { error } = await supabase.from('portfolio_messages').upsert([toDbMessage(msg)]);
+      if (error) console.warn('Supabase message upsert error:', error);
     } catch (err) {
       console.warn('Supabase message upsert failed:', err);
     }
@@ -493,7 +702,8 @@ export async function deleteMessage(id) {
 
   if (isSupabaseConfigured()) {
     try {
-      await supabase.from('portfolio_messages').delete().eq('id', id);
+      const { error } = await supabase.from('portfolio_messages').delete().eq('id', id);
+      if (error) console.warn('Supabase message delete error:', error);
     } catch (err) {
       console.warn('Supabase message delete failed:', err);
     }
@@ -510,7 +720,8 @@ export async function toggleMessageRead(id) {
 
     if (isSupabaseConfigured()) {
       try {
-        await supabase.from('portfolio_messages').update({ unread: msg.unread }).eq('id', id);
+        const { error } = await supabase.from('portfolio_messages').update({ unread: msg.unread }).eq('id', id);
+        if (error) console.warn('Supabase update unread error:', error);
       } catch (err) {
         console.warn('Supabase update unread failed:', err);
       }
@@ -528,62 +739,61 @@ export async function syncWithCloud() {
     // 1. Settings
     const { data: cloudSettings, error: sErr } = await supabase.from('portfolio_settings').select('*').limit(1);
     if (!sErr && cloudSettings && cloudSettings.length > 0) {
-      setLocal(STORAGE_KEYS.SETTINGS, cloudSettings[0]);
+      setLocal(STORAGE_KEYS.SETTINGS, fromDbSettings(cloudSettings[0]));
     } else if (!sErr) {
-      // Empty in cloud: upload local
       const localS = getSettings();
-      await supabase.from('portfolio_settings').upsert([localS]);
+      await supabase.from('portfolio_settings').upsert([toDbSettings(localS)]);
     }
 
     // 2. Tech Stacks
-    const { data: cloudTech, error: tErr } = await supabase.from('portfolio_tech_stacks').select('*');
+    const { data: cloudTech, error: tErr } = await supabase.from('portfolio_tech_stacks').select('*').order('created_at', { ascending: true });
     if (!tErr && cloudTech && cloudTech.length > 0) {
-      setLocal(STORAGE_KEYS.TECH_STACKS, cloudTech);
+      setLocal(STORAGE_KEYS.TECH_STACKS, cloudTech.map(fromDbTech));
     } else if (!tErr) {
       const localT = getTechStacks();
-      if (localT.length > 0) await supabase.from('portfolio_tech_stacks').upsert(localT);
+      if (localT.length > 0) await supabase.from('portfolio_tech_stacks').upsert(localT.map(toDbTech));
     }
 
     // 3. Projects
-    const { data: cloudProjects, error: pErr } = await supabase.from('portfolio_projects').select('*');
+    const { data: cloudProjects, error: pErr } = await supabase.from('portfolio_projects').select('*').order('created_at', { ascending: true });
     if (!pErr && cloudProjects && cloudProjects.length > 0) {
-      setLocal(STORAGE_KEYS.PROJECTS, cloudProjects);
+      setLocal(STORAGE_KEYS.PROJECTS, cloudProjects.map(fromDbProject));
     } else if (!pErr) {
       const localP = getProjects();
-      if (localP.length > 0) await supabase.from('portfolio_projects').upsert(localP);
+      if (localP.length > 0) await supabase.from('portfolio_projects').upsert(localP.map(toDbProject));
     }
 
     // 4. Timeline
-    const { data: cloudTimeline, error: tlErr } = await supabase.from('portfolio_timeline').select('*');
+    const { data: cloudTimeline, error: tlErr } = await supabase.from('portfolio_timeline').select('*').order('created_at', { ascending: true });
     if (!tlErr && cloudTimeline && cloudTimeline.length > 0) {
-      setLocal(STORAGE_KEYS.TIMELINE, cloudTimeline);
+      setLocal(STORAGE_KEYS.TIMELINE, cloudTimeline.map(fromDbTimeline));
     } else if (!tlErr) {
       const localTl = getTimeline();
-      if (localTl.length > 0) await supabase.from('portfolio_timeline').upsert(localTl);
+      if (localTl.length > 0) await supabase.from('portfolio_timeline').upsert(localTl.map(toDbTimeline));
     }
 
     // 5. Certificates
-    const { data: cloudCerts, error: cErr } = await supabase.from('portfolio_certificates').select('*');
+    const { data: cloudCerts, error: cErr } = await supabase.from('portfolio_certificates').select('*').order('created_at', { ascending: true });
     if (!cErr && cloudCerts && cloudCerts.length > 0) {
-      setLocal(STORAGE_KEYS.CERTIFICATES, cloudCerts);
+      setLocal(STORAGE_KEYS.CERTIFICATES, cloudCerts.map(fromDbCertificate));
     } else if (!cErr) {
       const localC = getCertificates();
-      if (localC.length > 0) await supabase.from('portfolio_certificates').upsert(localC);
+      if (localC.length > 0) await supabase.from('portfolio_certificates').upsert(localC.map(toDbCertificate));
     }
 
     // 6. Hackathons
-    const { data: cloudHacks, error: hErr } = await supabase.from('portfolio_hackathons').select('*');
+    const { data: cloudHacks, error: hErr } = await supabase.from('portfolio_hackathons').select('*').order('created_at', { ascending: true });
     if (!hErr && cloudHacks && cloudHacks.length > 0) {
-      setLocal(STORAGE_KEYS.HACKATHONS, cloudHacks);
+      setLocal(STORAGE_KEYS.HACKATHONS, cloudHacks.map(fromDbHackathon));
     } else if (!hErr) {
       const localH = getHackathons();
-      if (localH.length > 0) await supabase.from('portfolio_hackathons').upsert(localH);
+      if (localH.length > 0) await supabase.from('portfolio_hackathons').upsert(localH.map(toDbHackathon));
     }
 
     // 7. Messages
-    const { data: cloudMsgs, error: mErr } = await supabase.from('portfolio_messages').select('*');
+    const { data: cloudMsgs, error: mErr } = await supabase.from('portfolio_messages').select('*').order('timestamp', { ascending: false });
     if (!mErr && cloudMsgs && cloudMsgs.length > 0) {
-      setLocal(STORAGE_KEYS.MESSAGES, cloudMsgs);
+      setLocal(STORAGE_KEYS.MESSAGES, cloudMsgs.map(fromDbMessage));
     }
 
     notifyDataChange('all');
@@ -591,6 +801,29 @@ export async function syncWithCloud() {
   } catch (err) {
     console.error('Cloud synchronization error:', err);
     return { success: false, error: err.message };
+  }
+}
+
+// Live Realtime Subscription Engine
+export function subscribeToCloudChanges(callback) {
+  if (!isSupabaseConfigured() || !supabase.channel) return null;
+
+  try {
+    const channel = supabase.channel('portfolio_realtime_sync')
+      .on('postgres_changes', { event: '*', schema: 'public' }, async (payload) => {
+        console.log('[Supabase Realtime] Table change detected:', payload.table, payload.eventType);
+        await syncWithCloud();
+        if (typeof callback === 'function') callback(payload);
+      })
+      .subscribe((status) => {
+        if (status === 'SUBSCRIBED') {
+          console.log('[Supabase] Live realtime sync channel connected.');
+        }
+      });
+    return channel;
+  } catch (err) {
+    console.warn('[Supabase] Realtime subscription could not be established:', err);
+    return null;
   }
 }
 
