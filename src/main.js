@@ -383,51 +383,20 @@ function renderTimeline() {
 /* ==========================================================================
    8. Technical Toolkit & Skills (#skills)
    ========================================================================== */
-let activeSkillCategory = 'All';
-
 function renderSkills() {
   const tech = getTechStacks();
-  const settings = getSettings();
-  const filterBar = document.getElementById('skills-filter-bar');
   const grid = document.getElementById('skills-grid');
-  if (!filterBar || !grid) return;
+  if (!grid) return;
 
-  // Build category chips
-  const categories = ['All', ...(settings.categories || ['Frontend', 'Backend', 'Databases', 'DevOps', 'AI & ML'])];
-  filterBar.innerHTML = categories.map(cat => `
-    <button class="filter-chip ${activeSkillCategory === cat ? 'active' : ''}" data-cat="${cat}">
-      ${cat}
-    </button>
-  `).join('');
-
-  filterBar.querySelectorAll('.filter-chip').forEach(btn => {
-    btn.addEventListener('click', () => {
-      activeSkillCategory = btn.dataset.cat;
-      renderSkills();
-    });
-  });
-
-  const filtered = activeSkillCategory === 'All'
-    ? tech
-    : tech.filter(t => t.category.toLowerCase() === activeSkillCategory.toLowerCase());
-
-  if (filtered.length === 0) {
-    grid.innerHTML = '<p class="text-muted">No skills in this category.</p>';
+  if (!tech || tech.length === 0) {
+    grid.innerHTML = '<p class="text-muted">No skills configured yet.</p>';
     return;
   }
 
-  grid.innerHTML = filtered.map(item => `
+  grid.innerHTML = tech.map(item => `
     <div class="skill-card">
-      <div class="skill-header">
-        <div class="skill-title-wrap">
-          <svg class="icon"><use href="#icon-${item.icon || 'code'}"></use></svg>
-          <span class="skill-name">${item.name}</span>
-        </div>
-        <span class="skill-percent">${item.level}%</span>
-      </div>
-      <div class="progress-track">
-        <div class="progress-fill" style="width: ${item.level}%"></div>
-      </div>
+      <svg class="icon"><use href="#icon-${item.icon || 'code'}"></use></svg>
+      <span class="skill-name">${item.name}</span>
     </div>
   `).join('');
 }
@@ -957,13 +926,9 @@ function setupAdminActionButtons() {
     addSkillForm.addEventListener('submit', async e => {
       e.preventDefault();
       const name = document.getElementById('admin-skill-name').value.trim();
-      const category = document.getElementById('admin-skill-cat').value.trim();
-      const level = parseInt(document.getElementById('admin-skill-level').value) || 80;
       await saveTechStack({
         id: 'tech-' + Date.now(),
         name,
-        category,
-        level,
         icon: 'code'
       });
       addSkillForm.reset();
@@ -1202,9 +1167,7 @@ function renderAdminSkillsList() {
   list.innerHTML = items.map(t => `
     <tr>
       <td><strong>${t.name}</strong></td>
-      <td>${t.category}</td>
-      <td>${t.level}%</td>
-      <td>
+      <td style="text-align:center;">
         <button class="btn btn-secondary btn-sm delete-skill-btn" data-id="${t.id}">
           <svg class="icon"><use href="#icon-trash"></use></svg>
         </button>
@@ -1439,7 +1402,7 @@ function renderPrintableView(type) {
     <div style="margin-bottom: 20px;">
       <h2 style="font-size: 16px; border-bottom: 1px solid #ddd; padding-bottom: 4px; margin-bottom: 10px; text-transform: uppercase;">Technical Skills</h2>
       <p style="font-size: 13px; line-height: 1.6;">
-        ${tech.map(t => `<strong>${t.name}</strong> (${t.category})`).join(' • ')}
+        ${tech.map(t => `<strong>${t.name}</strong>`).join(' • ')}
       </p>
     </div>
 

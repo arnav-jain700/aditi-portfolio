@@ -97,7 +97,7 @@ PORTFOLIO DEVELOPER INFORMATION:
 - Socials: GitHub: ${s.github}, LinkedIn: ${s.linkedin}
 
 TECHNICAL SKILLS:
-${tech.map(t => `- ${t.name} (${t.category}, Proficiency: ${t.level}%)`).join('\n')}
+${tech.map(t => `- ${t.name}`).join('\n')}
 
 FEATURED PROJECTS:
 ${projs.map(p => `- ${p.title} [Category: ${p.category}]: ${p.description} (Tech: ${p.tags.join(', ')}) Live: ${p.liveUrl}, Code: ${p.githubUrl}`).join('\n')}
@@ -152,8 +152,8 @@ function getOfflineChatbotResponse(query, settings) {
   const certs = getCertificates();
 
   if (q.includes('skill') || q.includes('stack') || q.includes('technolog') || q.includes('language')) {
-    const topSkills = tech.slice(0, 8).map(t => `**${t.name}** (${t.category})`).join(', ');
-    return `**${settings.ownerName}** specializes in: \n\n${topSkills}, and more. You can explore the full interactive skill breakdown and proficiency meters in the **#skills** section!`;
+    const topSkills = tech.slice(0, 8).map(t => `**${t.name}**`).join(', ');
+    return `**${settings.ownerName}** specializes in: \n\n${topSkills}, and more. You can explore the full tech stack in the **#skills** section!`;
   }
 
   if (q.includes('project') || q.includes('work') || q.includes('portfolio') || q.includes('built')) {

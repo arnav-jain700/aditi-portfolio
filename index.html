@@ -250,10 +250,9 @@
         <div class="content-wrap">
           <div class="section-header">
             <span class="section-badge">Toolkit & Expertise</span>
-            <h2 class="section-title">Technical Skills & Proficiency</h2>
-            <p class="section-subtitle">Categorized competencies spanning modern full-stack frameworks, databases, and DevOps orchestration.</p>
+            <h2 class="section-title">Technical Skills</h2>
+            <p class="section-subtitle">Core technologies, frameworks, databases, and developer tooling.</p>
           </div>
-          <div id="skills-filter-bar" class="skills-filter-bar"></div>
           <div id="skills-grid" class="skills-grid"></div>
         </div>
       </section>
@@ -538,11 +537,9 @@
         <!-- PANE A: Tech Stacks -->
         <div id="admin-pane-stacks" class="admin-pane active">
           <h3 style="margin-bottom:16px;">Add New Skill</h3>
-          <form id="admin-add-skill-form" style="display:grid;grid-template-columns:2fr 2fr 1fr 1fr;gap:12px;margin-bottom:28px;">
-            <input type="text" id="admin-skill-name" class="form-input" placeholder="Skill Name (e.g. Go, GraphQL)" required />
-            <input type="text" id="admin-skill-cat" class="form-input" placeholder="Category (e.g. Backend, Frontend)" required />
-            <input type="number" id="admin-skill-level" class="form-input" placeholder="Level (0-100)" min="1" max="100" value="85" />
-            <button type="submit" class="btn btn-primary btn-sm"><svg class="icon"><use href="#icon-plus"></use></svg> Add</button>
+          <form id="admin-add-skill-form" style="display:flex;gap:12px;margin-bottom:28px;">
+            <input type="text" id="admin-skill-name" class="form-input" placeholder="Skill Name (e.g. Go, Docker, GraphQL)" required style="flex:1;" />
+            <button type="submit" class="btn btn-primary btn-sm"><svg class="icon"><use href="#icon-plus"></use></svg> Add Skill</button>
           </form>
 
           <h3>Configured Tech Stacks</h3>
@@ -550,9 +547,7 @@
             <thead>
               <tr>
                 <th>Skill</th>
-                <th>Category</th>
-                <th>Proficiency</th>
-                <th>Action</th>
+                <th style="width:100px;text-align:center;">Action</th>
               </tr>
             </thead>
             <tbody id="admin-skills-table-body"></tbody>
