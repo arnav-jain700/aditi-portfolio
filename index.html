@@ -171,11 +171,11 @@
           <div class="hero-grid">
             <div class="hero-content">
               <h1 class="hero-title">
-                Hi, I'm <span id="hero-owner-name" class="gradient-text">Aditi</span>.<br />
-                Crafting Scalable AI & Web Systems.
+                <span id="hero-owner-name" class="gradient-text">Aditi</span><br />
+                <span class="hero-role-title">Data Science &amp; Data Engineering</span>
               </h1>
               <p id="hero-owner-bio" class="hero-bio">
-                Full-Stack Software Engineer & AI Systems Architect passionate about building high-performance web applications, intelligent developer tooling, and interactive 3D digital experiences.
+                Data Scientist &amp; Data Systems Engineer passionate about building scalable data pipelines, predictive machine learning models, and high-performance analytics platforms.
               </p>
               <div class="hero-stats">
                 <div class="stat-item">
@@ -215,16 +215,25 @@
               </div>
             </div>
 
-            <!-- 3D Projects Carousel Viewport -->
-            <div class="hero-carousel-container">
-              <button id="carousel-prev-btn" class="carousel-nav-btn left" aria-label="Previous Project">
-                &#10094;
-              </button>
-              <div id="carousel-viewport" class="carousel-viewport"></div>
-              <button id="carousel-next-btn" class="carousel-nav-btn right" aria-label="Next Project">
-                &#10095;
-              </button>
-              <div id="carousel-dots" class="carousel-dots"></div>
+            <!-- Profile Picture Frame -->
+            <div class="hero-profile-container">
+              <div class="profile-frame-wrap">
+                <div class="profile-glow-ring"></div>
+                <div class="profile-frame">
+                  <img id="hero-profile-img" src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80" alt="Aditi - Data Science & Data Engineering" class="profile-avatar-img" />
+                  <div class="profile-glass-overlay"></div>
+                </div>
+
+                <!-- Floating Badges -->
+                <div class="profile-badge badge-top">
+                  <span class="pulse-dot-cyan"></span>
+                  <span>Data &amp; AI Systems</span>
+                </div>
+                <div class="profile-badge badge-bottom">
+                  <svg class="icon"><use href="#icon-sparkles"></use></svg>
+                  <span>Data Science &bull; Data Engineering</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -650,6 +659,17 @@
               <div>
                 <label class="form-label">LinkedIn Profile URL</label>
                 <input type="url" id="admin-set-linkedin" class="form-input" />
+              </div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:6px;">
+              <label class="form-label" style="margin-bottom:0;">Profile Picture (Choose file from device or enter URL)</label>
+              <div style="display:flex;align-items:center;gap:12px;">
+                <input type="file" id="admin-set-avatar-file" accept="image/*" class="form-input" style="padding:7px;" />
+                <span style="color:var(--text-muted);font-size:0.85rem;">or</span>
+                <input type="url" id="admin-set-avatar" class="form-input" placeholder="Image URL (Unsplash or direct)" />
+              </div>
+              <div id="admin-set-avatar-preview-wrap" style="display:none;margin-top:6px;">
+                <img id="admin-set-avatar-preview" src="" alt="Profile Preview" style="width:70px;height:70px;border-radius:50%;object-fit:cover;border:2px solid var(--accent-cyan);" />
               </div>
             </div>
             <button type="submit" class="btn btn-primary" style="align-self:flex-start;margin-top:8px;">

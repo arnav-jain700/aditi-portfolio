@@ -15,7 +15,7 @@ const STORAGE_KEYS = {
 const DEFAULT_SETTINGS = {
   id: 'main_settings',
   ownerName: 'Aditi',
-  ownerBio: 'Full-Stack Software Engineer & AI Systems Architect passionate about building high-performance web applications, intelligent developer tooling, and interactive 3D digital experiences.',
+  ownerBio: 'Data Scientist & Data Systems Engineer passionate about building scalable data pipelines, predictive machine learning models, and high-performance analytics platforms.',
   email: 'aditi.tech@example.com',
   location: 'Bengaluru, Karnataka, India',
   linkedin: 'https://www.linkedin.com/in/aditi-codes',
@@ -24,6 +24,7 @@ const DEFAULT_SETTINGS = {
   medium: '',
   groqKey: '',
   geminiKey: '',
+  avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80',
   categories: ['Frontend', 'Backend', 'Databases', 'DevOps', 'AI & ML', 'Version Control']
 };
 
@@ -307,6 +308,7 @@ function fromDbSettings(row) {
     medium: row.medium ?? '',
     groqKey: row.groqkey ?? row.groqKey ?? '',
     geminiKey: row.geminikey ?? row.geminiKey ?? '',
+    avatar: row.avatar || (typeof localStorage !== 'undefined' ? localStorage.getItem('portfolio_avatar') : '') || 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80',
     categories: Array.isArray(row.categories) ? row.categories : ['Frontend', 'Backend', 'Databases', 'DevOps', 'AI & ML', 'Version Control']
   };
 }

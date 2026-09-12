@@ -250,105 +250,12 @@ function renderHero() {
   const contactLocEl = document.getElementById('contact-location-text');
   if (contactLocEl) contactLocEl.textContent = settings.location;
 
-  const prevBtn = document.getElementById('carousel-prev-btn');
-  const nextBtn = document.getElementById('carousel-next-btn');
-  if (prevBtn) prevBtn.onclick = () => setCarouselSlide(carouselCurrentIndex - 1);
-  if (nextBtn) nextBtn.onclick = () => setCarouselSlide(carouselCurrentIndex + 1);
-
-  renderCarousel();
-}
-
-/* ==========================================================================
-   6. 3D Featured Projects Carousel
-   ========================================================================== */
-let carouselCurrentIndex = 0;
-let carouselTimer = null;
-
-function renderCarousel() {
-  const projects = getProjects();
-  const viewport = document.getElementById('carousel-viewport');
-  const dotsContainer = document.getElementById('carousel-dots');
-  if (!viewport || !dotsContainer) return;
-
-  viewport.onmouseenter = () => {
-    if (carouselTimer) clearInterval(carouselTimer);
-  };
-  viewport.onmouseleave = () => {
-    startCarouselAutoRotate();
-  };
-
-  viewport.innerHTML = '';
-  dotsContainer.innerHTML = '';
-
-  if (projects.length === 0) {
-    viewport.innerHTML = `<div class="carousel-card active"><p>No featured projects yet.</p></div>`;
-    return;
+  // Profile Picture Frame
+  const profileImgEl = document.getElementById('hero-profile-img');
+  if (profileImgEl) {
+    const avatar = localStorage.getItem('portfolio_avatar') || settings.avatar;
+    if (avatar) profileImgEl.src = avatar;
   }
-
-  projects.forEach((proj, idx) => {
-    const card = document.createElement('div');
-    card.className = `carousel-card ${idx === carouselCurrentIndex ? 'active' : ''}`;
-    card.dataset.index = idx;
-    card.innerHTML = `
-      <img src="${proj.image || 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80'}" class="carousel-img" alt="${proj.title}">
-      <div>
-        <span class="carousel-badge">${proj.category}</span>
-        <h3 class="carousel-title">${proj.title}</h3>
-        <p class="carousel-desc">${proj.description}</p>
-      </div>
-      <div class="carousel-footer">
-        <div class="project-tags">
-          ${proj.tags.slice(0, 3).map(t => `<span class="tag-badge">${t}</span>`).join('')}
-        </div>
-        <button class="btn btn-secondary btn-sm open-project-modal-btn" data-id="${proj.id}">Details</button>
-      </div>
-    `;
-    viewport.appendChild(card);
-
-    const dot = document.createElement('div');
-    dot.className = `carousel-dot ${idx === carouselCurrentIndex ? 'active' : ''}`;
-    dot.addEventListener('click', () => setCarouselSlide(idx));
-    dotsContainer.appendChild(dot);
-  });
-
-  updateCarouselCards();
-  startCarouselAutoRotate();
-}
-
-function updateCarouselCards() {
-  const cards = document.querySelectorAll('.carousel-card');
-  const dots = document.querySelectorAll('.carousel-dot');
-  const total = cards.length;
-  if (total === 0) return;
-
-  cards.forEach((card, idx) => {
-    card.classList.remove('active', 'prev', 'next');
-    if (idx === carouselCurrentIndex) {
-      card.classList.add('active');
-    } else if (idx === (carouselCurrentIndex - 1 + total) % total) {
-      card.classList.add('prev');
-    } else if (idx === (carouselCurrentIndex + 1) % total) {
-      card.classList.add('next');
-    }
-  });
-
-  dots.forEach((dot, idx) => {
-    dot.classList.toggle('active', idx === carouselCurrentIndex);
-  });
-}
-
-function setCarouselSlide(index) {
-  const projects = getProjects();
-  if (projects.length === 0) return;
-  carouselCurrentIndex = (index + projects.length) % projects.length;
-  updateCarouselCards();
-}
-
-function startCarouselAutoRotate() {
-  if (carouselTimer) clearInterval(carouselTimer);
-  carouselTimer = setInterval(() => {
-    setCarouselSlide(carouselCurrentIndex + 1);
-  }, 5000);
 }
 
 /* ==========================================================================
@@ -847,11 +754,46 @@ function refreshAdminPanes() {
 }
 
 function setupAdminActionButtons() {
-  // Settings Save
+  // Settings Save & Avatar Handling
+  const avatarFileInput = document.getElementById('admin-set-avatar-file');
+  const avatarUrlInput = document.getElementById('admin-set-avatar');
+  const avatarPreviewWrap = document.getElementById('admin-set-avatar-preview-wrap');
+  const avatarPreviewImg = document.getElementById('admin-set-avatar-preview');
+
+  if (avatarFileInput) {
+    avatarFileInput.addEventListener('change', e => {
+      const file = e.target.files && e.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = ev => {
+          const dataUrl = ev.target.result;
+          if (avatarUrlInput) avatarUrlInput.value = dataUrl;
+          if (avatarPreviewImg) avatarPreviewImg.src = dataUrl;
+          if (avatarPreviewWrap) avatarPreviewWrap.style.display = 'block';
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+  }
+
+  if (avatarUrlInput) {
+    avatarUrlInput.addEventListener('input', e => {
+      const val = e.target.value.trim();
+      if (val && avatarPreviewImg) {
+        avatarPreviewImg.src = val;
+        if (avatarPreviewWrap) avatarPreviewWrap.style.display = 'block';
+      }
+    });
+  }
+
   const settingsForm = document.getElementById('admin-settings-form');
   if (settingsForm) {
     settingsForm.addEventListener('submit', async e => {
       e.preventDefault();
+      const avatarVal = avatarUrlInput ? avatarUrlInput.value.trim() : '';
+      if (avatarVal) {
+        localStorage.setItem('portfolio_avatar', avatarVal);
+      }
       const updated = {
         ownerName: document.getElementById('admin-set-name').value.trim(),
         ownerBio: document.getElementById('admin-set-bio').value.trim(),
@@ -859,7 +801,8 @@ function setupAdminActionButtons() {
         location: document.getElementById('admin-set-loc').value.trim(),
         github: document.getElementById('admin-set-github').value.trim(),
         linkedin: document.getElementById('admin-set-linkedin').value.trim(),
-        groqKey: document.getElementById('admin-set-groq').value.trim()
+        groqKey: document.getElementById('admin-set-groq').value.trim(),
+        avatar: avatarVal || undefined
       };
       await saveSettings(updated);
       showToast('Settings saved & synced!');
@@ -1051,7 +994,6 @@ function setupAdminActionButtons() {
       if (projPreviewWrap) projPreviewWrap.style.display = 'none';
       renderAdminProjectsList();
       renderProjectsHub();
-      renderCarousel();
       renderHero();
       showToast(`Project "${title}" saved!`);
     });
@@ -1207,7 +1149,6 @@ function renderAdminProjectsList() {
       await deleteProject(btn.dataset.id);
       renderAdminProjectsList();
       renderProjectsHub();
-      renderCarousel();
       showToast('Project deleted.');
     });
   });
@@ -1281,6 +1222,16 @@ function renderAdminSettings() {
   document.getElementById('admin-set-github').value = s.github || '';
   document.getElementById('admin-set-linkedin').value = s.linkedin || '';
   document.getElementById('admin-set-groq').value = s.groqKey || '';
+
+  const avatarInput = document.getElementById('admin-set-avatar');
+  const avatarPreview = document.getElementById('admin-set-avatar-preview');
+  const previewWrap = document.getElementById('admin-set-avatar-preview-wrap');
+  const avatarVal = localStorage.getItem('portfolio_avatar') || s.avatar || '';
+  if (avatarInput) avatarInput.value = avatarVal;
+  if (avatarPreview && previewWrap && avatarVal) {
+    avatarPreview.src = avatarVal;
+    previewWrap.style.display = 'block';
+  }
 }
 
 function renderAdminTimelineList() {

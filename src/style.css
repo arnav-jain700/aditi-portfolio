@@ -464,6 +464,16 @@ section {
   letter-spacing: -1.5px;
 }
 
+.hero-role-title {
+  display: block;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-top: 10px;
+  letter-spacing: -0.5px;
+  line-height: 1.25;
+}
+
 .gradient-text {
   background: linear-gradient(135deg, var(--accent-cyan) 0%, var(--accent-purple) 60%, var(--accent-pink) 100%);
   -webkit-background-clip: text;
@@ -529,151 +539,137 @@ section {
   transform: translateY(-2px);
 }
 
-/* --- 3D Featured Projects Carousel --- */
-.hero-carousel-container {
+/* --- Hero Profile Picture Frame --- */
+.hero-profile-container {
   position: relative;
   width: 100%;
-  max-width: 480px;
+  max-width: 440px;
   margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.carousel-viewport {
-  width: 100%;
-  height: 400px;
+.profile-frame-wrap {
   position: relative;
+  width: 340px;
+  height: 420px;
+  max-width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
-  border-radius: var(--radius-lg);
 }
 
-.carousel-card {
+.profile-glow-ring {
   position: absolute;
-  top: 0;
-  left: 0;
+  inset: -14px;
+  border-radius: 32px;
+  background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple), var(--accent-pink));
+  opacity: 0.38;
+  filter: blur(24px);
+  z-index: 0;
+  animation: aura-pulse 5s ease-in-out infinite alternate;
+}
+
+@keyframes aura-pulse {
+  0% {
+    opacity: 0.28;
+    transform: scale(0.96);
+  }
+  100% {
+    opacity: 0.52;
+    transform: scale(1.03);
+  }
+}
+
+.profile-frame {
+  position: relative;
   width: 100%;
   height: 100%;
-  border-radius: var(--radius-lg);
-  background: var(--bg-secondary);
-  border: 1px solid var(--card-border);
-  box-shadow: var(--shadow-md);
-  padding: 24px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-  transform: scale(0.96);
-  transition: opacity 0.35s ease, transform 0.35s ease, visibility 0.35s;
-  z-index: 1;
-}
-
-.carousel-card.active {
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
-  transform: scale(1);
-  border-color: var(--accent-cyan);
-  box-shadow: 0 0 25px rgba(0, 240, 255, 0.22), var(--shadow-md);
-  z-index: 5;
-}
-
-.carousel-card.prev,
-.carousel-card.next {
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-  transform: scale(0.96);
-}
-
-.carousel-img {
-  width: 100%;
-  height: 160px;
-  border-radius: var(--radius-md);
-  object-fit: cover;
-  margin-bottom: 12px;
-}
-
-.carousel-badge {
-  font-size: 0.75rem;
-  color: var(--accent-cyan);
-  text-transform: uppercase;
-  font-weight: 700;
-  letter-spacing: 0.5px;
-}
-
-.carousel-title {
-  font-size: 1.25rem;
-  font-weight: 700;
-  margin: 6px 0;
-  color: var(--text-primary);
-}
-
-.carousel-desc {
-  font-size: 0.88rem;
-  color: var(--text-secondary);
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
+  border-radius: 26px;
   overflow: hidden;
+  border: 2px solid rgba(0, 240, 255, 0.45);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 30px rgba(0, 240, 255, 0.2);
+  background: var(--bg-secondary);
+  z-index: 1;
+  transition: transform var(--transition-smooth), border-color var(--transition-smooth), box-shadow var(--transition-smooth);
 }
 
-.carousel-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 14px;
+.profile-frame:hover {
+  transform: translateY(-6px) scale(1.02);
+  border-color: var(--accent-cyan);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7), 0 0 45px rgba(0, 240, 255, 0.35);
 }
 
-.carousel-nav-btn {
+.profile-avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.profile-frame:hover .profile-avatar-img {
+  transform: scale(1.06);
+}
+
+.profile-glass-overlay {
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: var(--card-bg);
-  border: 1px solid var(--card-border);
+  inset: 0;
+  background: linear-gradient(180deg, rgba(7, 9, 14, 0.0) 0%, rgba(7, 9, 14, 0.45) 100%);
+  pointer-events: none;
+}
+
+/* Floating Status & Role Badges */
+.profile-badge {
+  position: absolute;
+  z-index: 3;
+  background: rgba(14, 18, 26, 0.88);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(0, 240, 255, 0.35);
+  border-radius: var(--radius-full);
+  padding: 8px 18px;
+  font-size: 0.85rem;
+  font-weight: 600;
   color: var(--text-primary);
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
   display: flex;
   align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  z-index: 10;
-  transition: all var(--transition-fast);
-  backdrop-filter: blur(8px);
-}
-
-.carousel-nav-btn:hover {
-  background: var(--accent-cyan);
-  color: #000;
-}
-
-.carousel-nav-btn.left { left: -22px; }
-.carousel-nav-btn.right { right: -22px; }
-
-.carousel-dots {
-  display: flex;
-  justify-content: center;
   gap: 8px;
-  margin-top: 18px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  transition: all var(--transition-smooth);
 }
 
-.carousel-dot {
-  width: 10px;
-  height: 10px;
+.profile-badge:hover {
+  border-color: var(--accent-cyan);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(0, 240, 255, 0.25);
+}
+
+.profile-badge.badge-top {
+  top: -14px;
+  right: -14px;
+}
+
+.profile-badge.badge-bottom {
+  bottom: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  border-color: rgba(139, 92, 246, 0.45);
+}
+
+.profile-badge.badge-bottom:hover {
+  transform: translateX(-50%) translateY(-2px);
+}
+
+.pulse-dot-cyan {
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
-  background: var(--card-border);
-  cursor: pointer;
-  transition: all var(--transition-fast);
-}
-
-.carousel-dot.active {
   background: var(--accent-cyan);
-  width: 24px;
-  border-radius: 10px;
+  box-shadow: 0 0 10px var(--accent-cyan);
+  animation: pulse-dot 2s infinite;
 }
 
 /* --- Timeline Journey Section (#journey) --- */
@@ -1675,6 +1671,13 @@ section {
   .hero-content {
     align-items: center;
   }
+  .hero-role-title {
+    font-size: 1.8rem;
+  }
+  .profile-frame-wrap {
+    width: 290px;
+    height: 360px;
+  }
   .hero-stats {
     justify-content: center;
   }
@@ -1695,6 +1698,13 @@ section {
 @media (max-width: 640px) {
   .hero-title {
     font-size: 2.5rem;
+  }
+  .hero-role-title {
+    font-size: 1.4rem;
+  }
+  .profile-frame-wrap {
+    width: 260px;
+    height: 320px;
   }
   .match-columns {
     grid-template-columns: 1fr;
